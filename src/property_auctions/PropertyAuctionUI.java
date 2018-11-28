@@ -116,22 +116,27 @@ public class PropertyAuctionUI extends javax.swing.JFrame {
                 List<PropertyContent> datas = new ArrayList<>();
 //        int x = 1;
                 for (String url : auctionList) {
-                    System.out.println("Getting data from - " + url);
+                    if (url != null) {
+
+                        System.out.println("Getting data from - " + url);
 //            if (x > 1) {
 //                break;
 //            }
-                    try {
-                        datas.add(PropertyScraper.doM(url));
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            datas.add(PropertyScraper.doM(url));
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 //            x++;
+                    }
                 }
+                
                 try {
                     createExceSheet(datas, "./scrape_property.xlsx");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             } catch (InterruptedException ex) {
                 JOptionPane.showMessageDialog(null, "Something went wrong.. \n Terminated.");
                 Logger.getLogger(PropertyAuctionUI.class.getName()).log(Level.SEVERE, null, ex);
