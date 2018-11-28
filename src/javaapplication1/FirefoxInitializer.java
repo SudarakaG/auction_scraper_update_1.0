@@ -22,7 +22,7 @@ public class FirefoxInitializer {
         FirefoxOptions options = new FirefoxOptions();
         System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
         System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
-//        options.setHeadless(true);
+        options.setHeadless(true);
 
         driver = new FirefoxDriver(options);
     }
